@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter</title>
+</head>
+<body>
+    <h1>This is twitter</h1>
+    <form action="/tweets" method="POST">
+        <input type="text" placeholder="username" name="username">
+        <input type="text" placeholder="tweet" name="tweet">
+        <button type="submit">Send Tweet</button>
+    </form>
+    <h2>Latest Tweets</h2>
+    <div class="tweets">
+        <!-- Loop through tweets -->
+        <% for(var i = 0; i < tweets.length; i++) {%>
+          <h3 class="tweet">
+            <!-- Output name from the iterated tweet object -->
+            <span><%= tweets[i].username %></span>:
+            <!-- Output quote from the iterated quote object -->
+            <span><%= tweets[i].tweet %></span> | likes 
+            <span><%= tweets[i].likes %></span>
+            <button id="like-butt">Like</button>
+            <button id="del-butt">Delete</button>
+          </h3>
+        <% } %>
+    </div>
+    <script src="/main.js"></script>
+</body>
+</html>
