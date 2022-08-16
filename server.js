@@ -3,7 +3,7 @@ const app = express()
 const bodyParser = require('body-parser') //middleware to clean up req
 const MongoClient = require('mongodb').MongoClient //connect to mongodb
 const connectionString = 'mongodb+srv://twitter123:twitter123@twitter0.gze4vvo.mongodb.net/?retryWrites=true&w=majority'
-const PORT = 3000
+
 //tidy up the req before we use, urlencoded tells bodyparser to extract data from form and add to body
 //reach the db
 MongoClient.connect(connectionString, { useUnifiedTopology: true})
@@ -53,6 +53,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true})
             })
             .catch(error => console.error(error))
         })
-        app.listen(process.env.PORT || PORT, () => console.log(`listening on ${PORT}`))
+        app.listen(process.env.PORT, () => console.log(`listening on ${PORT}`))
     })
     .catch(error => console.error(error))
