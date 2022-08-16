@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser') //middleware to clean up req
+const cors = require('cors')
 const MongoClient = require('mongodb').MongoClient //connect to mongodb
 const connectionString = 'mongodb+srv://twitter123:twitter123@twitter0.gze4vvo.mongodb.net/?retryWrites=true&w=majority'
 
@@ -17,6 +18,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true})
         app.use(bodyParser.urlencoded({extended: true}))
         app.use(bodyParser.json())
         app.use(express.static('public'))
+        app.use(cors())
 
         //ROUTES
         app.get('/', (req,res) => {
