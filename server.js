@@ -4,6 +4,7 @@ const bodyParser = require('body-parser') //middleware to clean up req
 const cors = require('cors')
 const MongoClient = require('mongodb').MongoClient //connect to mongodb
 const connectionString = 'mongodb+srv://twitter123:twitter123@twitter0.gze4vvo.mongodb.net/?retryWrites=true&w=majority'
+let PORT = process.env.PORT || 3000
 
 //tidy up the req before we use, urlencoded tells bodyparser to extract data from form and add to body
 //reach the db
@@ -55,6 +56,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true})
             })
             .catch(error => console.error(error))
         })
-        app.listen(process.env.PORT, () => console.log(`its live`))
+        app.listen(PORT, () => console.log(`its live`))
     })
     .catch(error => console.error(error))
