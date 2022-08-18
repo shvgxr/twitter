@@ -22,13 +22,19 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true})
         app.use(cors())
 
         //ROUTES
-        app.get('/', (req,res) => {
-            db.collection('tweets').find().toArray()
-                .then(results => {
-                    res.render('index.ejs', { tweets: results})
-                })
-                .catch(error => console.error(error))
+        app.get('/', async (req,res) => {
+            const tweets = await db.collection('tweets').find().toArray()
+            //tweets.sort((a,b) => )
+            res.render('index.ejs', {tweets: tweets})
         })
+
+        // app.get('/', (req,res) => {
+        //     db.collection('tweets').find().toArray()
+        //         .then(results => {
+        //             res.render('index.ejs', { tweets: results})
+        //         })
+        //         .catch(error => console.error(error))
+        // })
         app.post('/tweets', (req,res) => {
             tweetsCollection.insertOne({username: req.body.username, tweet: req.body.tweet, likes: 0})
                 .then(result => {

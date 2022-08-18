@@ -1,5 +1,6 @@
 const like = document.querySelectorAll('#like-butt')
 const del = document.querySelectorAll('#del-butt')
+const tweets = document.getElementsByClassName('tweets')
 
 Array.from(like).forEach(element => {
     element.addEventListener('click', addLike)
